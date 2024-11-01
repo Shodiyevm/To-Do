@@ -2,10 +2,10 @@
 
 services:
     nginx:
-        container_name: store_nginx
+        container_name: todo_nginx
         image: nginx:alpine  # Use the Nginx image
         ports:
-            - "8083:80"  # Map port 8080 on the host to port 80 inside the container
+            - "8080:80"  # Map port 8080 on the host to port 80 inside the container
         volumes:
             - ./:/var/www  # Mount the Laravel application directory
             - ./nginx.conf:/etc/nginx/conf.d/default.conf  # Use our Nginx config
@@ -15,7 +15,7 @@ services:
             - laravel-network  # Connect to the custom network
 
     app:
-        container_name: store_app
+        container_name: todo_app
         build: .  # Build from the Dockerfile
         depends_on:
             - db
@@ -25,21 +25,21 @@ services:
             - laravel-network  # Connect to the custom network
 
     db:
-        container_name: store_db
+        container_name: todo_db
         image: mysql:8  # Use MySQL image
         restart: always
         ports:
             - "33011:3306"
         environment:
-            MYSQL_DATABASE: storee  # Create a database named 'laravel'
+            MYSQL_DATABASE: todos  # Create a database named 'laravel'
             MYSQL_ROOT_PASSWORD: root  # Set the root password for MySQL
         volumes:
-            - store_db:/var/lib/mysql  # Persist MySQL data
+            - todo_db:/var/lib/mysql  # Persist MySQL data
         networks:
             - laravel-network  # Connect to the custom network
 
     node:
-        container_name: store_node
+        container_name: todo_node
         image: node:20
         working_dir: /var/www
         volumes:
@@ -55,4 +55,4 @@ networks:
 
 # Define the volume for MySQL data persistence
 volumes:
-    store_db:
+    todo_db:

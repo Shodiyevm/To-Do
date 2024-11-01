@@ -6,7 +6,7 @@
     <title>Список дел</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&display=swap" rel="stylesheet">
-    <img src="/images/todo-logo.png" alt="To-Do Logo" class="w-16 h-16 mr-2">
+    
 </head>
 <body class="bg-gray-100 font-sans">
 

@@ -6,7 +6,7 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        container_name: rent_app
+        container_name: todo_app
         restart: unless-stopped
         volumes:
             - .:/var/www
@@ -32,7 +32,7 @@ services:
 
     pgadmin:
         image: dpage/pgadmin4
-        container_name: rent_pgadmin
+        container_name: todo_pgadmin
         restart: unless-stopped
         environment:
             PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
@@ -43,7 +43,7 @@ services:
             - app-network
             
     web:
-        container_name: rent_web
+        container_name: todo_web
         image: nginx:alpine  # Use the Nginx image
         ports:
             - "80:80"  # Map port 9000 on the host to port 80 inside the container

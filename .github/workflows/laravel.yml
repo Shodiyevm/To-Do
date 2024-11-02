@@ -52,4 +52,4 @@ jobs:
             cd To-Do
             git pull 
             docker-compose -f docker-compose.yml up -d --build
-            docker exec  store_app php artisan optimize
+            docker exec  todo_app php artisan optimize
